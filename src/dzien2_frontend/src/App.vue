@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue"
 import { dzien2_backend } from "declarations/dzien2_backend/index"
+import Blog from "./components/Blog.vue"
 let greeting = ref("")
 
 async function handleSubmit(e) {
@@ -9,8 +10,8 @@ async function handleSubmit(e) {
     const name = target.querySelector("#name").value
     const numer = target.querySelector("#numer").value
     await dzien2_backend.greet(name, Number(numer)).then((response) => {
-        greeting.value = response
-    })
+        greeting.value = response;
+    });
 }
 </script>
 
@@ -26,5 +27,6 @@ async function handleSubmit(e) {
             <button type="submit">Click Me!</button>
         </form>
         <section id="greeting">{{ greeting }}</section>
+        <Blog/>
     </main>
 </template>
